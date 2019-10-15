@@ -15,14 +15,14 @@ fetch('https://api.github.com/repos/PreMiD/Presences/pulls')
 
 			if(element.state == "open") {
 
-                if(element.title.length > 33) 
-                    title = element.title.substring(0,32) + "...";
+                if(element.title.length > 31) 
+                    title = element.title.substring(0,30) + "...";
                 else title = element.title;
 
                 pullRequests.innerHTML += `
-                <div class="pr">
-                    <a href="${element.html_url}" target="_blank">
-                        <i class="fas fa-external-link-alt"></i>
+                <div class="pr hvr-grow">
+                    <a class="hvr-icon-grow" href="${element.html_url}" target="_blank">
+                        <i class="fas fa-external-link-alt hvr-icon"></i>
                     </a>
                     <p>${title}</p>
                 </div>
