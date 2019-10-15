@@ -1,0 +1,44 @@
+{
+  "name": "Presence Verifiers",
+  "description" : "For PreMiD Presence Verifiers, sends a notification when a new pull request is made.",
+  "version": "1.0.4",
+  "permissions": [
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "notifications",
+    "tabs",
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "scripts": ["background.js", "js/hot-reload.js"]
+  },
+  "content_security_policy": "script-src 'self' https://kit.fontawesome.com https://unpkg.com; object-src 'self'",
+  "content_scripts": [
+    {
+    "matches": ["*://*/*"],
+    "js": ["js/content.js", "background.js"]
+    }
+  ],
+  "web_accessible_resources": ["js/content.js"],
+  "browser_action": {
+    "default_popup": "extension.html",
+		"default_icon": {
+			"512": "assets/img/logo.png"
+		}
+	},
+	"icons": {
+		"512": "assets/img/logo.png"
+  },
+  "manifest_version": 2,
+  "commands": {
+    "_execute_browser_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "MacCtrl+Shift+F"
+      },
+      "description": "Opens a file."
+    }
+  }
+}

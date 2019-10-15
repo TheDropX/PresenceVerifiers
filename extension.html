@@ -1,0 +1,64 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a7e58d64e4.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  </head>
+
+  <body class="dark">
+
+    <div class="header">
+      <div class="header-text" id="extensionName"></div>
+    </div>
+
+    <div class="wrapper">
+
+      <div class="content" data-aos="fade-right">
+        <h2 class="name">Opened pull requests:</h2>
+        <div id="pullRequests">Loading...</div>
+      </div>
+
+      <div class="content" data-aos="fade-right">
+        <h2 class="name">Current Presence Verifiers:</h2>
+        <!-- TODO: Get Presence Verifiers using the PreMiD API (when Timeraa will update it - return all user roles) -->
+        <div class="pv">
+          <img src="https://avatars0.githubusercontent.com/u/20159369?s=400&v=4">
+          <p>Alanexei</p>
+        </div>
+        <div class="pv">
+          <img src="https://avatars1.githubusercontent.com/u/34792838?s=400&v=4">
+          <p>Bas950</p>
+        </div>
+        <div class="pv">
+          <img src="https://avatars2.githubusercontent.com/u/26717942?s=400&v=4">
+          <p>DooMLorD</p>
+        </div>
+        <div class="pv">
+          <img src="https://avatars1.githubusercontent.com/u/34042085?s=400&v=4">
+          <p>fror</p>
+        </div>
+        <div class="pv">
+          <img src="https://avatars1.githubusercontent.com/u/35700745?s=400&v=4">
+          <p>TheDrop.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="last">
+      <div class="last-text">
+        <div class="left" id="n">
+          Loading...
+        </div>
+        <div class="right" id="v">
+        Loading...
+        </div>
+      </div>
+    </div>
+
+  <script src="assets/js/popup.js"></script>
+  </body>
+
+</html>

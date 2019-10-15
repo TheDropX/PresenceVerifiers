@@ -1,0 +1,177 @@
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+body {
+
+    font-family: 'Roboto', sans-serif;
+    width: 310px;
+    height: 450px;
+
+}
+
+.dark {
+
+    background-color: #121212;
+    border: 0px;
+    margin: 0px;
+
+}
+
+.first {
+
+    width: 310px;
+    height: 450px;
+
+}
+
+.header {
+
+    background-color: #333333;
+    color: white;
+    width: 100%;
+    height: 50px;
+    display: table;
+
+}
+
+.header-text {
+    
+    display: table-cell;
+    color: white;
+    font-size: 20px;
+    font-weight: 400;
+    vertical-align: middle;
+    align-items: center;
+    text-align: center;
+
+}
+
+.last {
+
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    display: table;
+    width: 100%;
+    height: 50px;
+    color: white;
+    font-size: 15px;
+    font-weight: 400;
+
+}
+
+.right {
+
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+    padding: 10px;
+
+}
+
+.left {
+
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    padding: 10px;
+
+}
+
+.last-text {
+
+    background-color: #333333;
+    color: white;
+    width: 100%;
+    display: table;
+    height: 100%;
+
+}
+
+.content {
+
+    background-color: #1d1d1d;
+    padding: 16px;
+    border-radius: 3px;
+    margin: 0.75em 1.25em;
+    color: white;
+
+}
+
+.name {
+    
+    color: white;
+    margin: 0px 0px 15px;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: left;
+
+}
+
+.pv {
+
+    display: flex;
+    align-items: center;
+    height: 50px;
+    margin-bottom: 5px;
+    color: white;
+    background-color: #383838;
+    border-radius: 40px;
+
+}
+
+.pr {
+
+    background-color: #383838;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    height: 35px;
+    margin-bottom: 5px;
+    color: white;
+    padding: 2px;
+
+}
+
+.pr i {
+
+    margin-left: 15px;
+
+}
+
+.pv p, .pr p {
+
+    color: white;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 10px;
+
+}
+
+.pv img {
+
+    border-radius: 50%;
+    width: 40px;
+    margin-left: 5px;
+
+}
+
+i {
+
+    color: gray;
+
+}
+
+#supportedWebsites {
+
+    color: white;
+    margin-top: 10px;
+
+}
+
+.wrapper {
+
+    padding-bottom: 48px;
+
+}
