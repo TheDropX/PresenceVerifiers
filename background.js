@@ -1,7 +1,4 @@
 chrome.runtime.onMessage.addListener(function(request) {
-	if (request.message == "sendNotification") {
-		sendNotification("newPR", request.notificationTitle, request.notificationMessage, request.link, "Go to Pull Request");
-	}
 	if(request.message == "firstCheck") {
 		firstCheck(request.allPullRequests);
 	}
@@ -41,13 +38,36 @@ function sendNotification(name, notificationTitle, notificationMessage, link, bu
 
 function firstCheck(PR) {
 
-	chrome.storage.sync.get({ pullRequests: [] }, function(data) {
+	chrome.storage.sync.get({ pullRequests: [] }, function(prs) {
 
-		if(JSON.stringify(data.pullRequests) !== JSON.stringify(PR))
-			sendNotification("fCheck", "New/Closed Pull Requests", "Changes detected in pull requests.", "https://github.com/PreMiD/Presences", "Go to repository");
+		console.log("Fetching...");
 
-		savePullRequests(PR);
-	
+		fetch('https://api.github.com/repos/TheDropX/thedrop.me/pulls')
+			.then((res) => { return res.json() })
+			.then(function(data) { 
+				data.forEach(element => {
+
+					if(element.state == "open") {
+
+						console.log(element.number)
+
+						if(!prs.pullRequests.includes(element.number)) {
+							
+							prs.pullRequests.push(element.number);
+
+							sendNotification(`${element.number}`, "New pull request created.", `#${element.number}: ${element.title}`, element.html_url, "Go to Pull Request");
+
+							console.log("New pull request, sending notification...");
+
+						}
+					}
+				});
+				
+			}).then(() => {
+
+				savePullRequests(prs.pullRequests);
+				
+			})
 	});
 
 }

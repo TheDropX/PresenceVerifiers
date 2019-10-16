@@ -3,14 +3,14 @@ var allPullRequests = [], initialPullRequests = [];
 var style = "font-weight: 800; padding: 2px 5px; color: white;";
 
 
-fetch('https://api.github.com/repos/PreMiD/Presences/pulls')
+fetch('https://api.github.com/repos/TheDropX/thedrop.me/pulls')
 	.then((res) => { return res.json() })
 	.then(function(data) { 
 		data.forEach(element => {
 			if(element.state == "open") {
 
-				initialPullRequests.push(element.title);
-                allPullRequests.push(element.title);
+				initialPullRequests.push(element.number);
+                allPullRequests.push(element.number);
 
             }
 
@@ -23,38 +23,6 @@ fetch('https://api.github.com/repos/PreMiD/Presences/pulls')
         });
 
     });
-
-
-setInterval(() => {
-
-	info("Fetching...");
-
-    fetch('https://api.github.com/repos/PreMiD/Presences/pulls')
-        .then((res) => { return res.json() })
-        .then(function(data) { 
-            data.forEach(element => {
-
-                if(element.state == "open") {
-
-                    if(!initialPullRequests.includes(element.title) && !allPullRequests.includes(element.title)) {
-						
-						allPullRequests.push(element.title);
-
-                        chrome.runtime.sendMessage(chrome.runtime.id, {
-                            "message": "sendNotification",
-                            "notificationTitle": "New pull request created.",
-                            "notificationMessage": `#${element.number}: ${element.title}`,
-                            "link": element.html_url
-                        });
-
-                        info("New pull request, sending notification...");
-
-                    }
-                }
-            });
-		});
-
-}, 15000);
 
 
 function info(message) {
