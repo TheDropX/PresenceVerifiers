@@ -3,7 +3,7 @@ var allPullRequests = [], initialPullRequests = [];
 var style = "font-weight: 800; padding: 2px 5px; color: white;";
 
 
-fetch('https://api.github.com/repos/TheDropX/thedrop.me/pulls')
+fetch('https://api.github.com/repos/PreMiD/Presences/pulls')
 	.then((res) => { return res.json() })
 	.then(function(data) { 
 		data.forEach(element => {

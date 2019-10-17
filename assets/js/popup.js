@@ -45,12 +45,14 @@ fetch('https://api.thedrop.me/announcement')
             announcement.innerHTML = `
             <i class="ion ion-ios-cloud-outline" style="font-size: 40px; color: #fd8900;"></i> 
             <div class="anno-text">
-                <div class="anno-title" id="title">${data[0].title}</div>
+                <div class="anno-title" id="title">
+                    ${data[0].title}
+                    <a class="hvr-icon-grow" href="${data[0].link}" target="_blank">
+                        <i class="fas fa-external-link-alt hvr-icon" style="font-size: 13px;margin-bottom: 3px;color: #fd8900;line-height: 0;margin-left: 5px;" aria-hidden="true"></i>
+                    </a>
+                </div>
                 <p id="message">${data[0].message}</p>
             </div>
-            <a class="hvr-icon-grow" href="${data[0].link}" target="_blank">
-                <i class="fas fa-external-link-alt hvr-icon" style="font-size: 12px; margin-left: -50px; color: #fd8900; line-height: 2;"></i>
-            </a>
             `;
 
         }

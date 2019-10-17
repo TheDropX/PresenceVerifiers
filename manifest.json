@@ -1,7 +1,7 @@
 {
   "name": "Presence Verifiers",
   "description" : "For PreMiD Presence Verifiers, sends a notification when a new pull request is made.",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "permissions": [
     "activeTab",
     "declarativeContent",

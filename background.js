@@ -1,6 +1,9 @@
+var manifestData = chrome.runtime.getManifest();
+
 chrome.runtime.onMessage.addListener(function(request) {
 	if(request.message == "firstCheck") {
-		firstCheck(request.allPullRequests);
+		firstCheck();
+		checkForUpdate();
 	}
 });
 
@@ -36,28 +39,22 @@ function sendNotification(name, notificationTitle, notificationMessage, link, bu
 
 }
 
-function firstCheck(PR) {
+function firstCheck() {
 
 	chrome.storage.sync.get({ pullRequests: [] }, function(prs) {
 
-		console.log("Fetching...");
-
-		fetch('https://api.github.com/repos/TheDropX/thedrop.me/pulls')
+		fetch('https://api.github.com/repos/PreMiD/Presences/pulls')
 			.then((res) => { return res.json() })
 			.then(function(data) { 
 				data.forEach(element => {
 
 					if(element.state == "open") {
 
-						console.log(element.number)
-
 						if(!prs.pullRequests.includes(element.number)) {
 							
 							prs.pullRequests.push(element.number);
 
 							sendNotification(`${element.number}`, "New pull request created.", `#${element.number}: ${element.title}`, element.html_url, "Go to Pull Request");
-
-							console.log("New pull request, sending notification...");
 
 						}
 					}
@@ -69,6 +66,26 @@ function firstCheck(PR) {
 				
 			})
 	});
+
+}
+
+function checkForUpdate() {
+
+	fetch('https://api.github.com/repos/TheDropX/PresenceVerifiers/releases')
+		.then((res) => { return res.json() })
+		.then(function(data) { 
+
+			if(data[0].tag_name < manifestData.version) {
+
+				sendNotification(`newUpdate`, "New update available.", `Install the new version to get the latest features and bug fixes.`, data[0].html_url, "Download");
+
+				setTimeout(() => {
+					chrome.notifications.clear("newUpdate");
+				}, 60000);
+
+			}
+			
+	})
 
 }
 
